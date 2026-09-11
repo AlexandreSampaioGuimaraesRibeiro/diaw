@@ -10,14 +10,14 @@ This repository gathers the exercises and activities developed throughout the DI
 
 - **Java**
 - **Maven** — dependency and build management
-- *(add framework here if applicable — e.g. Spring Boot)*
+- **Spring Boot** — application development
 
 ## 📁 Structure
 
 | Folder | Description |
 |---|---|
-| `ClimaAPI/` | *(brief description — e.g. an API that fetches and returns weather data)* |
-| `TelaLogin/` | *(brief description — e.g. a login screen/authentication activity)* |
+| `ClimaAPI/` | *(API that fetches and returns weather data)* |
+| `TelaLogin/` | *(Login and authentication screen)* |
 
 ## 🚀 How to run
 
@@ -25,10 +25,9 @@ Each activity is an independent Maven project. To run one of them:
 
 ```bash
 cd activity-name
-./mvnw spring-boot:run
+mvn install
+mvn spring-boot:run
 ```
-
-*(adjust the command if the project doesn't use Spring Boot, or run it directly through your IDE)*
 
 ## 🎓 Course Info
 
