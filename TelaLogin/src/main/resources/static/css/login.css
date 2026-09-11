@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    min-height: 100%
+    
+}
+
+.login-container {
+
+    display: flex;
+
+    width: 60vw;
+    max-width: 1000px;
+
+    min-height: 500px;
+
+    background-color: #FCFEFF;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.login-image-logo-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    border-radius: 10px 0 0 10px;
+    padding: 0;
+}
+
+.login-image-logo-container img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    align-self: flex-start;
+    border-radius: 0;
+}
+
+.login-form {
+    width: 50%;
+    padding: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form form {
+    width: 100%;
+}
+
+
+.login-title {
+    color: gray;
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.login-button-container button {
+    width: 100%;
+    height: 5vh;
+    padding: 0.75rem;
+    background-color: #81B1C3;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.login-redirect-options {
+    text-align: center;
+    color: gray;
+    padding-top: 1rem;
+    font-weight: bolder;
+    font-size: small;
+}
+
+.login-redirect-options a {
+    color: #81B1C3;
+    font-weight: bold;
+}
+
+.login-redirect-options a:first-child {
+    margin-left: 5px;
+}
+
+.login-redirect-options a:last-child {
+    color: #FF743C;
+    margin-left: 5px;
+}
+
+.imagemDeFundo {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+
+  background-image: url("/images/imagemDeFundo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 90vw;
+        flex-direction: column;
+    }
+
+    .login-image-logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .login-image-logo-container img {
+        max-width: 60%;
+    }
+
+    .login-form {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
