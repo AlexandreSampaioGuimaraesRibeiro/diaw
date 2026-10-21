@@ -1,122 +1,47 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { pokemons, trainers, pokemonTypes } from "./utils/data";
+import SearchBar from "./components/SearchBar";
+import TypeFilter from "./components/TypeFilter";
+import PokemonList from "./components/PokemonList";
+import PokemonDetails from "./components/PokemonDetails";
+import TrainersPanel from "./components/TrainersPanel";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [view, setView] = useState("pokedex");
+  const [search, setSearch] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [selected, setSelected] = useState(null);
+
+  // estado derivado, sem useEffect
+  const filtered = pokemons.filter((p) => {
+    const matchesSearch =
+      p.name.toLowerCase().includes(search.toLowerCase()) ||
+      String(p.id).includes(search);
+    const matchesType = !selectedType || p.types.some((t) => t.name === selectedType);
+    return matchesSearch && matchesType;
+  });
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <header>
+        <h1>Pokédex</h1>
+        <nav>
+          <button className={view === "pokedex" ? "tab active" : "tab"} onClick={() => setView("pokedex")}>Pokémon</button>
+          <button className={view === "trainers" ? "tab active" : "tab"} onClick={() => setView("trainers")}>Treinadores</button>
+        </nav>
+      </header>
 
-      <div className="ticks"></div>
+      {view === "pokedex" ? (
+        <>
+          <SearchBar value={search} onChange={setSearch} />
+          <TypeFilter types={pokemonTypes} selected={selectedType} onChange={setSelectedType} />
+          <PokemonList pokemons={filtered} onSelect={setSelected} />
+        </>
+      ) : (
+        <TrainersPanel trainers={trainers} onSelectPokemon={setSelected} />
+      )}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {selected && <PokemonDetails pokemon={selected} onClose={() => setSelected(null)} />}
+    </div>
+  );
 }
-
-export default App
