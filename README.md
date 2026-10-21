@@ -8,26 +8,48 @@ This repository gathers the exercises and activities developed throughout the DI
 
 ## 🛠️ Technologies
 
+**Back-end projects**
 - **Java**
 - **Maven** — dependency and build management
 - **Spring Boot** — application development
 
+**Front-end project (Pokedex)**
+- **React**
+- **Vite** — build tool and dev server
+- **JavaScript (JSX)** and **CSS**
+
 ## 📁 Structure
 
-| Folder | Description |
-|---|---|
-| `ClimaAPI/` | *(API that fetches and returns weather data)* |
-| `TelaLogin/` | *(Login and authentication screen)* |
+| Folder | Stack | Description |
+|---|---|---|
+| `ClimaAPI/` | Spring Boot | API that fetches and returns weather data |
+| `ConsultaDecandidatosTSI/` | Spring Boot | Candidate lookup application |
+| `Pokedex/` | React + Vite | Interactive Pokédex with search by name/ID, type filter, Pokémon details and trainers |
+| `TelaLogin/` | Spring Boot | Login and authentication screen |
 
 ## 🚀 How to run
 
-Each activity is an independent Maven project. To run one of them:
+### Spring Boot projects
+
+`ClimaAPI`, `ConsultaDecandidatosTSI` and `TelaLogin` are independent Maven projects. To run one of them:
 
 ```bash
 cd activity-name
 mvn install
 mvn spring-boot:run
 ```
+
+### React project (Pokedex)
+
+`Pokedex` is a React + Vite project (requires [Node.js](https://nodejs.org/)):
+
+```bash
+cd Pokedex
+npm install
+npm run dev
+```
+
+Then open the address shown in the terminal (by default `http://localhost:5173`).
 
 ## 🎓 Course Info
 
