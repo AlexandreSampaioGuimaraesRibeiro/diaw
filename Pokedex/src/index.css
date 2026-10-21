@@ -1,3 +1,21 @@
+:root {
+  --bg: #12141c;
+  --surface: #1e212d;
+  --surface-2: #2a2e3d;
+  --text: #f1f3f9;
+  --text-muted: #9aa1b5;
+  --primary: #ee4b4b;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui, sans-serif; background: #12141c; color: #f1f1f1; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
 button { font: inherit; cursor: pointer; }
