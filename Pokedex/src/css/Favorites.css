@@ -1,0 +1,29 @@
+.fav-star {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.fav-star:hover { transform: scale(1.2); opacity: 1; }
+.fav-star.on { color: #ffcb05; opacity: 1; }
+
+.toolbar-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.fav-filter {
+  background: #232738;
+  color: #fff;
+  border: 2px solid #2d3248;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.fav-filter.active { background: #ffcb05; color: #222; border-color: #ffcb05; }

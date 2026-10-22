@@ -1,0 +1,20 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.pokeball {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background:
+    linear-gradient(#fff 0 0) center / 100% 4px no-repeat,
+    linear-gradient(#e63946 50%, #f1f1f1 50%);
+  transition: transform 0.5s;
+}
+
+.brand:hover .pokeball {
+  transform: rotate(360deg);
+}

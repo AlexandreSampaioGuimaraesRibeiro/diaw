@@ -19,7 +19,7 @@ h1 { font-size: 2rem; color: #ffcb05; text-shadow: 2px 2px #3b4cca; }
 .mini-stats { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: .2rem; margin-top: .7rem; font-size: .8rem; }
 .empty { text-align: center; padding: 3rem 0; font-size: 1.2rem; opacity: .8; }
 .overlay { position: fixed; inset: 0; background: #000b; display: grid; place-items: center; padding: 1rem; z-index: 10; }
-.modal { position: relative; width: min(440px, 100%); max-height: 95vh; overflow: auto; background: linear-gradient(160deg, color-mix(in srgb, var(--c) 50%, #1b1e2b), #1b1e2b 65%); border: 2px solid var(--c); border-radius: 18px; padding: 1.5rem; text-align: center; }
+.modal { position: relative; width: min(560px, 100%); max-height: 95vh; overflow: auto; background: linear-gradient(160deg, color-mix(in srgb, var(--c) 50%, #1b1e2b), #1b1e2b 65%); border: 2px solid var(--c); border-radius: 18px; padding: 1.5rem; text-align: center; }
 .modal img { width: 200px; height: 200px; object-fit: contain; }
 .close { position: absolute; top: .7rem; right: .8rem; background: #0005; color: #fff; border: 0; border-radius: 50%; width: 32px; height: 32px; }
 .stats { margin-top: 1rem; text-align: left; }
