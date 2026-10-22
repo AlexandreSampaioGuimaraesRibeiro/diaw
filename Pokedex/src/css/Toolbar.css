@@ -1,0 +1,29 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.toolbar select {
+  background: #1b1e2b;
+  color: #fff;
+  border: 2px solid #2d3248;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.random-btn {
+  background: #ffcb05;
+  color: #222;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  transition: transform 0.15s;
+}
+
+.random-btn:hover { transform: scale(1.05); }
