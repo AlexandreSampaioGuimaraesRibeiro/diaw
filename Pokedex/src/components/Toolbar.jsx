@@ -22,7 +22,7 @@ export default function Toolbar({ sortBy, onSortChange, onRandom }) {
           ))}
         </select>
       </label>
-      <button className="random-btn" onClick={onRandom}>🎲 Aleatório</button>
+      <button className="random-btn" onClick={onRandom}>🔄Aleatório</button>
     </div>
   );
 }
