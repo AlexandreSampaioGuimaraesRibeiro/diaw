@@ -11,18 +11,16 @@ const OPTIONS = [
   ["speed", "Speed"],
 ];
 
-export default function Toolbar({ sortBy, onSortChange, onRandom }) {
+export default function Toolbar({ sortBy, onSortChange, onRandom, onlyFavorites, onToggleOnlyFavorites }) {
   return (
-    <div className="toolbar">
-      <label>
-        Ordenar por:{" "}
-        <select value={sortBy} onChange={(e) => onSortChange(e.target.value)}>
-          {OPTIONS.map(([key, label]) => (
-            <option key={key} value={key}>{label}</option>
-          ))}
-        </select>
-      </label>
-      <button className="random-btn" onClick={onRandom}>🔄Aleatório</button>
-    </div>
+    <div className="toolbar-actions">
+  <button
+    className={onlyFavorites ? "fav-filter active" : "fav-filter"}
+    onClick={onToggleOnlyFavorites}
+  >
+    🌟Favoritos
+  </button>
+  <button className="random-btn" onClick={onRandom}>🔄Aleatório</button>
+</div>
   );
 }
