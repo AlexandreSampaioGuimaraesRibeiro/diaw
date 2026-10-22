@@ -5,6 +5,7 @@ import TypeFilter from "./components/TypeFilter";
 import PokemonList from "./components/PokemonList";
 import PokemonDetails from "./components/PokemonDetails";
 import TrainersPanel from "./components/TrainersPanel";
+import Header from "./components/Header";
 
 export default function App() {
   const [view, setView] = useState("pokedex");
@@ -23,14 +24,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <header>
-        <h1>Pokédex</h1>
-        <nav>
-          <button className={view === "pokedex" ? "tab active" : "tab"} onClick={() => setView("pokedex")}>Pokémon</button>
-          <button className={view === "trainers" ? "tab active" : "tab"} onClick={() => setView("trainers")}>Treinadores</button>
-        </nav>
-      </header>
-
+      <Header view={view} onChangeView={setView} />
       {view === "pokedex" ? (
         <>
           <SearchBar value={search} onChange={setSearch} />

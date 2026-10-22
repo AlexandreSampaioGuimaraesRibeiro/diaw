@@ -1,5 +1,4 @@
 import { getPokemonById, getPokemonImage } from "../utils/data";
-import "../css/Trainers.css";
 
 // agrupa repetidos: [48,48,48,49] -> [{id:48,count:3},{id:49,count:1}]
 const group = (ids) => {
