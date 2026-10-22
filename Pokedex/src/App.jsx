@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { pokemons, trainers, pokemonTypes } from "./utils/data";
 import SearchBar from "./components/SearchBar";
 import TypeFilter from "./components/TypeFilter";
@@ -14,6 +14,24 @@ export default function App() {
   const [selectedType, setSelectedType] = useState("");
   const [selected, setSelected] = useState(null);
   const [sortBy, setSortBy] = useState("id");
+  const [onlyFavorites, setOnlyFavorites] = useState(false);
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("favorites")) ?? [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  const toggleFavorite = (id) => {
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
+    );
+  };
 
   // estado derivado, sem useEffect
   const filtered = pokemons.filter((p) => {
@@ -21,7 +39,8 @@ export default function App() {
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       String(p.id).includes(search);
     const matchesType = !selectedType || p.types.some((t) => t.name === selectedType);
-    return matchesSearch && matchesType;
+    const matchesFavorite = !onlyFavorites || favorites.includes(p.id);
+    return matchesSearch && matchesType && matchesFavorite;
   });
 
   const sorted = [...filtered].sort((a, b) => {
@@ -41,8 +60,8 @@ const handleRandom = () => {
         <>
           <SearchBar value={search} onChange={setSearch} />
           <TypeFilter types={pokemonTypes} selected={selectedType} onChange={setSelectedType} />
-          <Toolbar sortBy={sortBy} onSortChange={setSortBy} onRandom={handleRandom} />
-          <PokemonList pokemons={sorted} onSelect={setSelected} />
+          <Toolbar sortBy={sortBy} onSortChange={setSortBy} onRandom={handleRandom} onlyFavorites={onlyFavorites} onToggleOnlyFavorites={() => setOnlyFavorites((v) => !v)} />
+          <PokemonList pokemons={sorted} onSelect={setSelected} favorites={favorites} onToggleFavorite={toggleFavorite} />
         </>
       ) : (
         <TrainersPanel trainers={trainers} onSelectPokemon={setSelected} />
