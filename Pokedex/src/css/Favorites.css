@@ -15,15 +15,33 @@
 .fav-star:hover { transform: scale(1.2); opacity: 1; }
 .fav-star.on { color: #ffcb05; opacity: 1; }
 
-.toolbar-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.toolbar-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 2rem; /* mais espaço acima e, principalmente, abaixo, antes dos cards */
+}
 
-.fav-filter {
-  background: #232738;
+.fav-filter,
+.toolbar-actions > button {
   color: #fff;
-  border: 2px solid #2d3248;
+  border: 2px solid transparent;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   font-weight: 600;
+  transition: filter 0.15s, transform 0.15s;
 }
+
+.toolbar-actions > button:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+/* Favoritos: vermelho */
+.toolbar-actions > button:first-child { background: #e63946; border-color: #e63946; }
+.toolbar-actions > button:first-child.active {
+  background: #b71c2b;          /* vermelho mais escuro quando o filtro está ligado */
+  border-color: #fff;
+}
+
+/* Aleatório: preto */
+.toolbar-actions > button:last-child { background: #000; border-color: #2d3248; }
 
 .fav-filter.active { background: #ffcb05; color: #222; border-color: #ffcb05; }
